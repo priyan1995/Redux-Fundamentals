@@ -15,6 +15,19 @@ const initialState = {
             title: 'occaecati cupiditate non provident', 
             body: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. '
         }
+    ],
+    news: [
+        {
+            id:'1', 
+            title: 'News 1', 
+            body: ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+        },
+        {
+            id:'2', 
+            title: 'News 2', 
+            body: 'Sed ut perspiciatis unde omnis iste natus error. '
+        },
+       
     ]
 } 
 
