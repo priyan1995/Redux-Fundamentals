@@ -1,5 +1,6 @@
 
 import { connect } from "react-redux";
+import News from "./news";
 
 
 const Home = (props) => {
@@ -7,11 +8,11 @@ const Home = (props) => {
 
     const postItems = props.posts;
 
-     console.log(props);
+    console.log(props);
 
     return (
         <>
-            <h2>Posts</h2>
+            <h2 className="main-title">Posts</h2>
 
             {
                 postItems.map(post => {
@@ -26,14 +27,15 @@ const Home = (props) => {
                 })
             }
 
+            <News />
+
         </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
-        news: state.news
+        posts: state.posts
     }
 }
 
