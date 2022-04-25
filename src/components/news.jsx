@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+import { Link } from "react-router-dom";
 
 const News = (props) => {
 
@@ -14,10 +15,13 @@ const News = (props) => {
             {
                 news.map(newsItem => {
                     return (
+
                         <div className="post-items" key={newsItem.id}>
                             <h2>{newsItem.title}</h2>
                             <p>{newsItem.body}</p>
+                            <Link to={`/news-view/${newsItem.id}`}>View More</Link>
                         </div>
+
                     )
                 })
             }

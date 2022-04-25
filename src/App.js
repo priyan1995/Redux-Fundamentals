@@ -3,10 +3,10 @@ import Home from './components/home';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import NewsView from './components/newsView';
+import PostView from './components/postView';
 
 function App() {
 
@@ -15,13 +15,11 @@ function App() {
             <Router>
 
                 <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
+                    <Route exact path="/" component={Home} />
 
-                    <Route path="/news-view/:id">
-                        <NewsView />
-                    </Route>
+                    <Route path="/post-view/:pid" component={PostView} />
+
+                    <Route path="/news-view/:newsId" component={NewsView} />
 
                 </Switch>
             </Router>

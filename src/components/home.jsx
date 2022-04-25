@@ -1,5 +1,6 @@
 
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import News from "./news";
 
 
@@ -21,6 +22,7 @@ const Home = (props) => {
                             <div className="post-items" key={post.id}>
                                 <h4>{post.title}</h4>
                                 <p>{post.body}</p>
+                                <Link to={`/post-view/${post.id}`}>Read More</Link>
                             </div>
                         </>
                     )
