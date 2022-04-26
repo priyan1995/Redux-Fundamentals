@@ -17,7 +17,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home} />
 
-                    <Route path="/post-view/:pid" component={PostView} />
+                    <Route path="/post-view/:postId" component={PostView} />
 
                     <Route path="/news-view/:newsId" component={NewsView} />
 

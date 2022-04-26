@@ -1,12 +1,22 @@
+import { connect } from "react-redux"
 
-
-const PostView = () => {
+const PostView = (props) => {
+    const postItem = props.posts;
+    console.log(postItem);
     return (
         <>
-            <h2>Post View</h2>
+            <h2>{postItem.title}</h2>
+            <p>{postItem.body}</p>
         </>
     )
 
 }
 
-export default PostView
+const mapStateToProps = (state, ownProps) => {
+    let pid = ownProps.match.params.postId;
+    return{
+        posts: state.posts.find(posts => posts.id === pid)
+    }
+}
+
+export default connect(mapStateToProps)(PostView)
