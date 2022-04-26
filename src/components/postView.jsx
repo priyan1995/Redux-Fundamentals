@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import deletePost from "../actions/postActions";
 
 const PostView = (props) => {
 
@@ -12,10 +13,8 @@ const PostView = (props) => {
     const deleteHandler = () => {
        
         props.deletePost(props.posts.id);
-
         
-        //history.push('/');
-       
+        history.push('/');       
     }
 
 
@@ -38,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost: (id) => { dispatch({ type: 'DELETE_POST', id: id }) }
+        deletePost: (id) => { dispatch(deletePost(id)) }
     }
 }
 
