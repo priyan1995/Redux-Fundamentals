@@ -1,3 +1,4 @@
+
 const initialState = {
     posts: [
         {
@@ -45,12 +46,23 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             posts: newPosts
             
-        }
-        
+        }        
     }
 
-    return state;
-  
+    if(action.type === 'DELETE_NEWS'){
+        let newNews = state.news.filter ( news => {
+            return action.id != news.id
+        });
+
+        return{
+            ...state,
+            news: newNews
+        }
+    }
+
+
+    return state;  
 }
+
 
 export default rootReducer;
