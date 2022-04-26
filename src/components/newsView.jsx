@@ -1,14 +1,18 @@
 
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import deleteNews from "../actions/newsActions";
 
 const NewsView = (props) => {
 
+    const history = useHistory();
+
     const newsItem = props.news;
-    console.log(newsItem)
+    // console.log(newsItem)
 
     const deleteHandeler = () => {
-        props.deleteNews(props.news.id)
+        props.deleteNews(props.news.id);
+        history.push('/')
     }
    
     return (

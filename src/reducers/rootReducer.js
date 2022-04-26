@@ -1,3 +1,4 @@
+import students from "../components/students";
 
 const initialState = {
     posts: [
@@ -29,6 +30,26 @@ const initialState = {
             body: 'Sed ut perspiciatis unde omnis iste natus error. '
         },
        
+    ],
+    students: [
+        {
+            id:'1',
+            name: 'John Wick',
+            subject: 'English',
+            university: 'Harvard University'
+        },
+        {
+            id:'2',
+            name: 'Jack Sparrow',
+            subject: 'Science',
+            university: 'Harvard University'
+        },
+        {
+            id:'3',
+            name: 'Martin Sam',
+            subject: 'Maths',
+            university: 'Harvard University'
+        }
     ]
 } 
 
@@ -57,6 +78,17 @@ const rootReducer = (state = initialState, action) => {
         return{
             ...state,
             news: newNews
+        }
+    }
+
+    if(action.type === 'DELETE_STUDENT'){
+        let newStudent = state.students.filter ( students => {
+            return action.id != students.id
+        });
+
+        return{
+            ...state,
+            students: newStudent
         }
     }
 
