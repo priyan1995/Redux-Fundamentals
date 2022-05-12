@@ -1,11 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Cars = () => {
+const Cars = (props) => {
+    console.log(props.cars)
+    const cars = props.cars;
     return (
         <>
-        <h4>Cars</h4>
+            <h2 className="main-title">Cars</h2>
+            {
+                cars.map(car => {
+                    return (
+                        <div className="post-items" key={car.id}>
+                            <h2>{car.brand}</h2>
+                            <h4>{car.name}</h4>
+                            <h5>Seats: {car.seats}</h5>
+                            <h5>Engine: {car.engineCapacity}</h5>
+                        </div>
+                    )
+                })
+            }
         </>
     )
 }
 
-export default Cars;
+const mapStateToProps = (state) => {
+    return {
+        cars: state.cars
+    }
+}
+
+export default connect(mapStateToProps)(Cars);
