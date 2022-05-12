@@ -11,6 +11,7 @@ import PostView from './components/postView';
 import Students from './components/students';
 import StudentView from './components/studentView';
 import Cars from './components/cars';
+import CarView from './components/carView';
 
 function App() {
 
@@ -38,9 +39,10 @@ function App() {
 
                     <Route path='/student-view/:studentId' component={StudentView} />
 
-                    <Route path="/cars" >
-                        <Cars />
-                    </Route>
+                    <Route path='/cars' component={Cars} />
+
+                    <Route path='/car-view/:carId' component={CarView} />
+                     
 
                 </Switch>
             </Router>
