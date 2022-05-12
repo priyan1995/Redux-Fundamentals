@@ -10,6 +10,7 @@ import NewsView from './components/newsView';
 import PostView from './components/postView';
 import Students from './components/students';
 import StudentView from './components/studentView';
+import Cars from './components/cars';
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
                     <Link to='/home'>Home</Link>
                     <br />
                     <Link to='/students'>Students</Link>
+                    <br />
+                    <Link to='/cars'>Cars</Link>
                 </nav>
 
                 <Switch>
@@ -34,6 +37,10 @@ function App() {
                     <Route path='/students' component={Students} />
 
                     <Route path='/student-view/:studentId' component={StudentView} />
+
+                    <Route path="/cars" >
+                        <Cars />
+                    </Route>
 
                 </Switch>
             </Router>
