@@ -12,6 +12,7 @@ import Students from './components/students';
 import StudentView from './components/studentView';
 import Cars from './components/cars';
 import CarView from './components/carView';
+import IceCreams from './components/iceCreams';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
                     <Link to='/students'>Students</Link>
                     <br />
                     <Link to='/cars'>Cars</Link>
+                    <br />
+                    <Link to='/ice-creams'>Ice Creams</Link>
                 </nav>
 
                 <Switch>
@@ -42,8 +45,9 @@ function App() {
                     <Route path='/cars' component={Cars} />
 
                     <Route path='/car-view/:carId' component={CarView} />
-                     
 
+                    <Route path='/ice-creams' component={IceCreams} />
+                     
                 </Switch>
             </Router>
         </div>
