@@ -1,3 +1,1 @@
-export const IcecreamData = {
-    numberOfIceCreams: 10
-}
+export const IcecreamData = 10

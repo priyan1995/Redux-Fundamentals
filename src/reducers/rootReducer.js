@@ -54,7 +54,7 @@ const rootReducer = (state = initialState, action) => {
         }
     }
 
-    if (action.type = "DELETE_CAR") {
+    if (action.type === "DELETE_CAR") {
         let newCar = state.cars.filter(car => {
             return action.id != car.id
         });
@@ -64,6 +64,16 @@ const rootReducer = (state = initialState, action) => {
             cars: newCar
         }
     }
+
+    if(action.type === "DELETE_ICE_CREAM"){
+        return{
+            ...state,
+            iceCreams: state.iceCreams-1
+            
+        }
+        
+    }
+    
 
 
     return state;

@@ -5,6 +5,8 @@ import deleteCar from '../actions/carActions';
 
 const CarView = (props) => {
 
+
+    console.log(props);
     const history = useHistory();
 
     const car = props.car;
