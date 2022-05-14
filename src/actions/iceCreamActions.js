@@ -4,4 +4,10 @@ const deleteIceCream = () =>{
     }
 }
 
-export default deleteIceCream;
+const addIceCream = () => {
+    return{
+        type: "ADD_ICE_CREAM"
+    }
+}
+
+export { deleteIceCream, addIceCream };

@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import deleteIceCream from '../actions/iceCreamActions';
+import  { deleteIceCream,addIceCream } from '../actions/iceCreamActions';
 
 const IceCreams = (props) => {
-
-    console.log(props)
-
+    
     const iceCreamInfo = props.iceCream;
 
     const deductIceCream = () =>{
         props.deleteIceCream();
-        console.log("deducted", iceCreamInfo)
     }
 
+    const addIceCream = () => {
+        props.addIceCream();
+    }
 
     return (
         <>
             <h1>Number Of Ice Creams: {iceCreamInfo}</h1>
 
-            <button>Make New Ice Cream</button>
+            <button onClick={addIceCream}>Make New Ice Cream</button>
             <br /><br />
             <button onClick={deductIceCream}>Sell Ice Cream</button>
         </>
@@ -34,7 +34,8 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        deleteIceCream: () => dispatch(deleteIceCream()) 
+        deleteIceCream: () => dispatch(deleteIceCream()) ,
+        addIceCream: () => dispatch(addIceCream())
     }
 }
 

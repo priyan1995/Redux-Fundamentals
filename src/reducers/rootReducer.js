@@ -73,6 +73,13 @@ const rootReducer = (state = initialState, action) => {
         }
         
     }
+
+    if(action.type === "ADD_ICE_CREAM"){
+        return{
+            ...state,
+            iceCreams: state.iceCreams+1
+        }
+    }
     
 
 
