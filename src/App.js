@@ -14,6 +14,7 @@ import Cars from './components/cars';
 import CarView from './components/carView';
 import IceCreams from './components/iceCreams';
 import countries from './components/countries';
+import  CountryView  from './components/countryView';
 
 function App() {
 
@@ -52,6 +53,9 @@ function App() {
                     <Route path='/ice-creams' component={IceCreams} />
                     
                     <Route path='/countries' component={countries} />
+
+                    <Route path='/country-view/:countryId' component={CountryView} />
+
                      
                 </Switch>
             </Router>
