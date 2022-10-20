@@ -13,7 +13,7 @@ import StudentView from './components/studentView';
 import Cars from './components/cars';
 import CarView from './components/carView';
 import IceCreams from './components/iceCreams';
-import { Countries } from './components/countries';
+import countries from './components/countries';
 
 function App() {
 
@@ -50,7 +50,8 @@ function App() {
                     <Route path='/car-view/:carId' component={CarView} />
 
                     <Route path='/ice-creams' component={IceCreams} />
-                    <Route path='/countries' component={Countries} />
+                    
+                    <Route path='/countries' component={countries} />
                      
                 </Switch>
             </Router>

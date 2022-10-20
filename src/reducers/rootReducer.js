@@ -1,5 +1,6 @@
 import students from "../components/students";
 import { CarsData } from "../dataArrays/carsData";
+import { CountriesData } from "../dataArrays/CountriesData";
 import { IcecreamData } from "../dataArrays/iceCreamData";
 import { NewsData } from "../dataArrays/newsData";
 import { PostsData } from "../dataArrays/postsData";
@@ -11,7 +12,8 @@ const initialState = {
     news: NewsData,
     students: StudentsData,
     cars: CarsData,
-    iceCreams: IcecreamData
+    iceCreams: IcecreamData,
+    countries: CountriesData
 }
 
 
