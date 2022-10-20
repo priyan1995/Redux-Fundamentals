@@ -82,6 +82,18 @@ const rootReducer = (state = initialState, action) => {
             iceCreams: state.iceCreams+1
         }
     }
+
+    if(action.type === "DELETE_COUNTRY"){
+   
+        let newCountry = state.countries.filter(country => {
+            return action.id  != country.id
+        })
+
+        return{
+            ...state,
+            countries: newCountry
+        }
+    }
     
 
 
