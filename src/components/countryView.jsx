@@ -4,10 +4,15 @@ import { connect } from "react-redux";
 const CountryView = (props) => {
 
     console.log(props.country );
+    const country = props.country;
     
     return (
         <>
-            <h4>Country View</h4>
+             <div className="student-view">
+                <h2>{country.name}</h2>
+                <h4>Capital: {country.capital}</h4>
+                <h4>Population: {country.population}</h4>
+            </div>
         </>
     )
 }
