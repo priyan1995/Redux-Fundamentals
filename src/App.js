@@ -15,6 +15,7 @@ import CarView from './components/carView';
 import IceCreams from './components/iceCreams';
 import countries from './components/countries';
 import  CountryView  from './components/countryView';
+import { Users } from './components/users';
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
                     <Link to='/ice-creams'>Ice Creams</Link>
                     <br />
                     <Link to='/countries'>Countries</Link>
+                    <br />
+                    <Link to='/users'>Users</Link>
                 </nav>
 
                 <Switch>
@@ -55,6 +58,8 @@ function App() {
                     <Route path='/countries' component={countries} />
 
                     <Route path='/country-view/:countryId' component={CountryView} />
+
+                    <Route path='/users' component={Users} />
 
                      
                 </Switch>
