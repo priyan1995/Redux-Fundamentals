@@ -1,4 +1,4 @@
-import { INCREMENT_VLAUE } from "../actionTypes/actionType";
+import { DECREMENT_VALUE, INCREMENT_VLAUE } from "../actionTypes/actionType";
 import students from "../components/students";
 import { CarsData } from "../dataArrays/carsData";
 import { CountriesData } from "../dataArrays/CountriesData";
@@ -102,6 +102,13 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 incrementAmount: state.incrementAmount + 100
             }
+    }
+
+    if(action.type === DECREMENT_VALUE){
+        return{
+            ...state,
+            incrementAmount: state.incrementAmount - 100
+        }
     }
     
 
