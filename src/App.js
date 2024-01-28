@@ -16,6 +16,7 @@ import IceCreams from './components/iceCreams';
 import countries from './components/countries';
 import  CountryView  from './components/countryView';
 import { Users } from './components/users';
+import { Increment } from './components/Increment';
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
                     <Link to='/countries'>Countries</Link>
                     <br />
                     <Link to='/users'>Users</Link>
+                     <br />
+                    <Link to='/increment'>Increment</Link>
                 </nav>
 
                 <Switch>
@@ -60,6 +63,8 @@ function App() {
                     <Route path='/country-view/:countryId' component={CountryView} />
 
                     <Route path='/users' component={Users} />
+
+                    <Route path='/increment' component={Increment} />
 
                      
                 </Switch>

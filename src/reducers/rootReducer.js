@@ -1,3 +1,4 @@
+import { INCREMENT_VLAUE } from "../actionTypes/actionType";
 import students from "../components/students";
 import { CarsData } from "../dataArrays/carsData";
 import { CountriesData } from "../dataArrays/CountriesData";
@@ -13,7 +14,8 @@ const initialState = {
     students: StudentsData,
     cars: CarsData,
     iceCreams: IcecreamData,
-    countries: CountriesData
+    countries: CountriesData,
+    increment:100
 }
 
 
@@ -93,6 +95,12 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             countries: newCountry
         }
+    }
+
+    if(action.type === INCREMENT_VLAUE){
+            return{
+                ...state.increment + 100
+            }
     }
     
 
