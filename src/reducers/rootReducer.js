@@ -15,7 +15,7 @@ const initialState = {
     cars: CarsData,
     iceCreams: IcecreamData,
     countries: CountriesData,
-    increment:100
+    incrementAmount:100
 }
 
 
@@ -99,7 +99,8 @@ const rootReducer = (state = initialState, action) => {
 
     if(action.type === INCREMENT_VLAUE){
             return{
-                ...state.increment + 100
+                ...state,
+                incrementAmount: state.incrementAmount + 100
             }
     }
     

@@ -14,6 +14,8 @@ const IceCreams = (props) => {
         props.addIceCream();
     }
 
+    console.log(props);
+
     return (
         <>
             <h1>Number Of Ice Creams: {iceCreamInfo}</h1>
@@ -39,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (IceCreams);
+export default connect(mapStateToProps, mapDispatchToProps)(IceCreams);

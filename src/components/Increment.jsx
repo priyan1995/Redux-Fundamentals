@@ -1,23 +1,53 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { incrementValue } from "../actions/incrementActions";
 
-export const Increment = () => {
-    
+const Increment = (props) => {
 
-     const value = useSelector((state)=>{
-        const incVal = state.increment;
+    // const dispatch = useDispatch();
 
-        return incVal;
-     })
+    //  const value = useSelector((state)=>{
+    //     const incVal = state.increment;
 
-     console.log(value)
+    //     return incVal;
+    //  })
 
 
-    return(
+
+    //  const handleIncrement =() => {
+    //     console.log(value);
+
+    //     dispatch(incrementValue);
+    //  }
+
+
+    const stateValue = props.incVal;
+    console.log(stateValue)
+
+    const handleIncrement = () => {
+        props.incrementVal();
+    }
+
+
+    return (
         <>
-        <h2>Click the button to increment value</h2>
-        <h3>{value}</h3>
-        
+            <h2>Click the button to increment value</h2>
+            <h3>{stateValue}</h3>
+            <button onClick={handleIncrement}> Increment </button>
         </>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        incVal: state.incrementAmount
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        incrementVal: () => dispatch(incrementValue())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Increment); 
