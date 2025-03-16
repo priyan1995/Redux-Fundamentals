@@ -14,61 +14,81 @@ import Cars from './components/cars';
 import CarView from './components/carView';
 import IceCreams from './components/iceCreams';
 import countries from './components/countries';
-import  CountryView  from './components/countryView';
+import CountryView from './components/countryView';
 import { Users } from './components/users';
-import  Increment  from './components/Increment';
+import Increment from './components/Increment';
+import { Container, FormControlLabel } from '@mui/material';
+import { DarkModeButton } from './components/DarkModeButton';
 
 function App() {
 
+    const setDarkTheme = () => {
+        document.querySelector('body').setAttribute("data-theme", "dark");
+    }
+
+    const setLightTheme = () => {
+        document.querySelector('body').setAttribute("data-theme", "light");
+    }
+
+    const changeTheme = () => {
+
+    }
+
     return (
         <div className="App">
-            <Router>
 
-                <nav>
-                    <Link to='/home'>Home</Link>
-                    <br />
-                    <Link to='/students'>Students</Link>
-                    <br />
-                    <Link to='/cars'>Cars</Link>
-                    <br />
-                    <Link to='/ice-creams'>Ice Creams</Link>
-                    <br />
-                    <Link to='/countries'>Countries</Link>
-                    <br />
-                    <Link to='/users'>Users</Link>
-                     <br />
-                    <Link to='/increment'>Increment</Link>
-                </nav>
+            <DarkModeButton />
 
-                <Switch>
 
-                    <Route exact path="/home" component={Home} />
+            <Container>
+                <Router>
 
-                    <Route path="/post-view/:postId" component={PostView} />
+                    <nav>
+                        <Link to='/'>Home</Link>
+                        <br />
+                        <Link to='/students'>Students</Link>
+                        <br />
+                        <Link to='/cars'>Cars</Link>
+                        <br />
+                        <Link to='/ice-creams'>Ice Creams</Link>
+                        <br />
+                        <Link to='/countries'>Countries</Link>
+                        <br />
+                        <Link to='/users'>Users</Link>
+                        <br />
+                        <Link to='/increment'>Increment</Link>
+                    </nav>
 
-                    <Route path="/news-view/:newsId" component={NewsView} />
+                    <Switch>
 
-                    <Route path='/students' component={Students} />
+                        <Route path="/" exact component={Home} />
 
-                    <Route path='/student-view/:studentId' component={StudentView} />
+                        <Route path="/post-view/:postId" component={PostView} />
 
-                    <Route path='/cars' component={Cars} />
+                        <Route path="/news-view/:newsId" component={NewsView} />
 
-                    <Route path='/car-view/:carId' component={CarView} />
+                        <Route path='/students' component={Students} />
 
-                    <Route path='/ice-creams' component={IceCreams} />
-                    
-                    <Route path='/countries' component={countries} />
+                        <Route path='/student-view/:studentId' component={StudentView} />
 
-                    <Route path='/country-view/:countryId' component={CountryView} />
+                        <Route path='/cars' component={Cars} />
 
-                    <Route path='/users' component={Users} />
+                        <Route path='/car-view/:carId' component={CarView} />
 
-                    <Route path='/increment' component={Increment} />
+                        <Route path='/ice-creams' component={IceCreams} />
 
-                     
-                </Switch>
-            </Router>
+                        <Route path='/countries' component={countries} />
+
+                        <Route path='/country-view/:countryId' component={CountryView} />
+
+                        <Route path='/users' component={Users} />
+
+                        <Route path='/increment' component={Increment} />
+
+
+                    </Switch>
+                </Router>
+            </Container>
         </div>
     );
 }
