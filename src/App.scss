@@ -1,3 +1,17 @@
+[data-theme="dark"]{
+    background-color:black;
+    p,a,h2,label,h4{
+        color: white;
+    }
+    .post-items{
+        background-color: gray;
+    }
+}
+
+
+
+
+
 .post-items {
     text-align: left;
     border-bottom: 2px solid rgb(183, 183, 183);

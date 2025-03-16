@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Home from './components/home';
 import {
     BrowserRouter as Router,
@@ -22,17 +22,7 @@ import { DarkModeButton } from './components/DarkModeButton';
 
 function App() {
 
-    const setDarkTheme = () => {
-        document.querySelector('body').setAttribute("data-theme", "dark");
-    }
 
-    const setLightTheme = () => {
-        document.querySelector('body').setAttribute("data-theme", "light");
-    }
-
-    const changeTheme = () => {
-
-    }
 
     return (
         <div className="App">

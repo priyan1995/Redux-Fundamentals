@@ -3,8 +3,20 @@ import React from "react";
 
 export const DarkModeButton = () => {
 
-    const handleDarkMode = () => {
+    const setDarkTheme = () => {
+        document.querySelector('body').setAttribute("data-theme", "dark");
+    }
 
+    const setLightTheme = () => {
+        document.querySelector('body').setAttribute("data-theme", "light");
+    }
+
+    const handleDarkMode = (e) => {
+        if(e.target.checked){
+            setDarkTheme();
+        }else{
+            setLightTheme();
+        }
     }
     return (
         <>
