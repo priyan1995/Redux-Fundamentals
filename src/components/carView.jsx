@@ -1,20 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import deleteCar from '../actions/carActions';
 
 const CarView = (props) => {
 
-
-    console.log(props);
     const navigate = useNavigate();
+    const { carId } = useParams();
+    const dispatch = useDispatch();
 
-    const car = props.car;
+    const cars = useSelector((state) => state.cars);
+    const car = cars.find((s) => s.id === carId);
+
 
     const removeCar = () => {
-        console.log("car removed");
-        props.deleteCar(car.id);
-        navigate('/')
+        navigate('/cars');
+        dispatch(deleteCar(car.id));
     }
 
 
@@ -31,17 +32,5 @@ const CarView = (props) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    let cid = ownProps.match.params.carId;
-    return {
-        car: state.cars.find(car => car.id == cid)
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        deleteCar: (id) => {dispatch(deleteCar(id))}
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CarView);
+export default CarView;
