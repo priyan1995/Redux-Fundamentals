@@ -15,7 +15,7 @@ const initialState = {
     cars: CarsData,
     iceCreams: IcecreamData,
     countries: CountriesData,
-    incrementAmount:100
+    incrementAmount: 100
 }
 
 
@@ -63,54 +63,54 @@ const rootReducer = (state = initialState, action) => {
             return action.id != car.id
         });
 
-        return{
+        return {
             ...state,
             cars: newCar
         }
     }
 
-    if(action.type === "DELETE_ICE_CREAM"){
-        return{
+    if (action.type === "DELETE_ICE_CREAM") {
+        return {
             ...state,
-            iceCreams: state.iceCreams-1
-            
+            iceCreams: state.iceCreams - 1
+
         }
-        
+
     }
 
-    if(action.type === "ADD_ICE_CREAM"){
-        return{
+    if (action.type === "ADD_ICE_CREAM") {
+        return {
             ...state,
-            iceCreams: state.iceCreams+1
+            iceCreams: state.iceCreams + 1
         }
     }
 
-    if(action.type === "DELETE_COUNTRY"){
-   
+    if (action.type === "DELETE_COUNTRY") {
+
         let newCountry = state.countries.filter(country => {
-            return action.id  != country.id
+            return action.id != country.id
         })
 
-        return{
+        return {
             ...state,
             countries: newCountry
         }
     }
 
-    if(action.type === INCREMENT_VLAUE){
-            return{
-                ...state,
-                incrementAmount: state.incrementAmount + 100
-            }
+    if (action.type === INCREMENT_VLAUE) {
+        return {
+            ...state,
+            incrementAmount: state.incrementAmount + 100
+        }
     }
 
-    if(action.type === DECREMENT_VALUE){
-        return{
+    if (action.type === DECREMENT_VALUE) {
+        return {
             ...state,
             incrementAmount: state.incrementAmount - 100
         }
     }
-    
+
 
 
     return state;

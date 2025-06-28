@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useNavigate } from "react-router-dom";
 import deleteCountry from "../actions/countryActions";
 
 const CountryView = (props) => {
 
     console.log(props.country );
     const country = props.country;
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const removeCountry = () => {
         props.deleteCountry(country.id);
-        history.push("/countries");
+        navigate("/countries");
 
     }
     

@@ -1,20 +1,21 @@
-import { connect } from "react-redux"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { connect } from "react-redux";
 import deletePost from "../actions/postActions";
+import { useNavigate } from "react-router-dom";
 
 const PostView = (props) => {
 
-    
+
 
     const postItem = props.posts;
     //console.log(props);
 
-    let history = useHistory();
+    const navigate = useNavigate();
+    
     const deleteHandler = () => {
-       
+
         props.deletePost(props.posts.id);
-        
-        history.push('/');       
+
+        navigate('/');
     }
 
 

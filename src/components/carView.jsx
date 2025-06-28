@@ -1,20 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import deleteCar from '../actions/carActions';
 
 const CarView = (props) => {
 
 
     console.log(props);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const car = props.car;
 
     const removeCar = () => {
         console.log("car removed");
         props.deleteCar(car.id);
-        history.push('/')
+        navigate('/')
     }
 
 
