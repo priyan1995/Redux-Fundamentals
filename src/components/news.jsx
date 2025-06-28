@@ -1,11 +1,9 @@
-import { connect } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 
 const News = (props) => {
 
-    const news = props.news;
-
-    // console.log(news);
+    const news = useSelector((state) => state.news)
 
     return (
         <>
@@ -13,27 +11,29 @@ const News = (props) => {
             <h2 className="main-title">News</h2>
 
             {
-                news.map(newsItem => {
-                    return (
-
-                        <div className="post-items" key={newsItem.id}>
-                            <h2>{newsItem.title}</h2>
-                            <p>{newsItem.body}</p>
-                            <Link to={`/news-view/${newsItem.id}`}>View More</Link>
-                        </div>
-
+                news.length === 0 ?
+                    (
+                        <h2 className="text-center">No News Items Found...!</h2>
                     )
-                })
+                    :
+                    (
+                        news.map(newsItem => {
+                            return (
+
+                                <div className="post-items" key={newsItem.id}>
+                                    <h2>{newsItem.title}</h2>
+                                    <p>{newsItem.body}</p>
+                                    <Link to={`/news-view/${newsItem.id}`}>View More</Link>
+                                </div>
+
+                            )
+                        })
+                    )
             }
 
         </>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        news: state.news
-    }
-}
 
-export default connect(mapStateToProps)(News)
+export default News;

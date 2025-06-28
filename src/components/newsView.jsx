@@ -1,20 +1,22 @@
 
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import deleteNews from "../actions/newsActions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NewsView = (props) => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { newsId } = useParams();
 
-    const newsItem = props.news;
-    // console.log(newsItem)
+    const newsItems = useSelector((state) => state.news);
+    const newsItem = newsItems.find((s) => s.id === newsId)
 
     const deleteHandeler = () => {
-        props.deleteNews(props.news.id);
+        dispatch(deleteNews(newsItem.id))
         navigate('/')
     }
-   
+
     return (
         <>
             <h2>{newsItem.title}</h2>
@@ -24,17 +26,6 @@ const NewsView = (props) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    let id = ownProps.match.params.newsId;
-    return {
-        news: state.news.find(news => news.id === id)      
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        deleteNews: (id) => {dispatch(deleteNews(id))}
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps )(NewsView);
+export default NewsView;
