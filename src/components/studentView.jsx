@@ -1,17 +1,20 @@
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import deleteStudent from "../actions/studentActions";
 import { useNavigate, useParams } from "react-router-dom";
 
-const StudentView = ({ students, deleteStudent }) => {
-    const { studentId } = useParams();
+const StudentView = (props) => {
 
+    const { studentId } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const students = useSelector((state)=>state.students);
 
     const studentItem = students.find((s) => s.id === studentId);
 
     const deleteHandler = () => {
-        deleteStudent(studentItem.id);
-        navigate("/");
+        dispatch(deleteStudent(studentItem.id));    
+        navigate("/students");
     };
 
     if (!studentItem) {
@@ -28,12 +31,4 @@ const StudentView = ({ students, deleteStudent }) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-    students: state.students,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    deleteStudent: (id) => dispatch(deleteStudent(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StudentView);
+export default StudentView;
