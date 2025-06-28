@@ -6,10 +6,7 @@ import News from "./news";
 
 const Home = (props) => {
 
-
     const postItems = props.posts;
-
-    console.log(props);
 
     return (
         <>

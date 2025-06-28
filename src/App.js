@@ -45,18 +45,18 @@ function App() {
           </nav>
 
           <Routes>
-            <Route path='/' element={<Home/>} />
+            <Route path='/' element={<Home />} />
             <Route path="/post-view/:postId" element={<PostView />} />
-          <Route path="/news-view/:newsId" element={<NewsView />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/student-view/:studentId" element={<StudentView />} />
-          <Route path="/cars" element={<Cars />} />
-          <Route path="/car-view/:carId" element={<CarView />} />
-          <Route path="/ice-creams" element={<IceCreams />} />
-          <Route path="/countries" element={<Countries />} />
-          <Route path="/country-view/:countryId" element={<CountryView />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/increment" element={<Increment />} />
+            <Route path="/news-view/:newsId" element={<NewsView />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/student-view/:studentId" element={<StudentView />} />
+            <Route path="/cars" element={<Cars />} />
+            <Route path="/car-view/:carId" element={<CarView />} />
+            <Route path="/ice-creams" element={<IceCreams />} />
+            <Route path="/countries" element={<Countries />} />
+            <Route path="/country-view/:countryId" element={<CountryView />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/increment" element={<Increment />} />
           </Routes>
         </Router>
       </Container>

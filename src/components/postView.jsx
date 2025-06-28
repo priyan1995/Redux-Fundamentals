@@ -1,23 +1,22 @@
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import deletePost from "../actions/postActions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PostView = (props) => {
 
-
-
-    const postItem = props.posts;
-    //console.log(props);
-
+    const { postId } = useParams();
     const navigate = useNavigate();
-    
+    const dispatch = useDispatch();
+
+    const postItems = useSelector((state) => state.posts);
+
+    const postItem = postItems.find((s) => s.id === postId);
+
     const deleteHandler = () => {
-
-        props.deletePost(props.posts.id);
-
+        dispatch(deletePost(postItem.id))
         navigate('/');
     }
-
+    console.log(postItem);
 
     return (
         <>
@@ -29,20 +28,18 @@ const PostView = (props) => {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
-    let pid = ownProps.match.params.postId;
-    return {
-        posts: state.posts.find(posts => posts.id === pid)
-    }
-}
+// const mapStateToProps = (state, ownProps) => {
+//     let pid = ownProps.match.params.postId;
+//     return {
+//         posts: state.posts.find(posts => posts.id === pid)
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deletePost: (id) => { dispatch(deletePost(id)) }
-    }
-}
-
-
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         deletePost: (id) => { dispatch(deletePost(id)) }
+//     }
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostView)
+export default PostView;
