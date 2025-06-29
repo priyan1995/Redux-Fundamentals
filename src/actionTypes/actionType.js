@@ -1,2 +1,4 @@
 export const INCREMENT_VLAUE = "INCREMENT_VALUE";
 export const DECREMENT_VALUE = "DECREMENT_VALUE";
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";

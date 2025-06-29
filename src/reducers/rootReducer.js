@@ -1,4 +1,5 @@
-import { DECREMENT_VALUE, INCREMENT_VLAUE } from "../actionTypes/actionType";
+
+import { CLOSE_MODAL, DECREMENT_VALUE, INCREMENT_VLAUE, OPEN_MODAL } from "../actionTypes/actionType";
 import students from "../components/students";
 import { CarsData } from "../dataArrays/carsData";
 import { CountriesData } from "../dataArrays/CountriesData";
@@ -15,14 +16,28 @@ const initialState = {
     cars: CarsData,
     iceCreams: IcecreamData,
     countries: CountriesData,
-    incrementAmount: 100
+    incrementAmount: 100,
+    openmodal: false
 }
 
 
 
 
 const rootReducer = (state = initialState, action) => {
-    // console.log(action)
+
+    if (action.type === OPEN_MODAL) {
+        return {
+            ...state,
+            openmodal: true
+        }
+    }
+
+    if (action.type === CLOSE_MODAL) {
+        return {
+            ...state,
+            openmodal: false
+        }
+    }
 
     if (action.type === 'DELETE_POST') {
         let newPosts = state.posts.filter(post => {

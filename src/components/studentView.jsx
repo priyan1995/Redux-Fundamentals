@@ -1,15 +1,15 @@
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import deleteStudent from "../actions/studentActions";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
 import { Box, Button, Modal } from "@mui/material";
+import { closeModal, openModal } from "../actions/modalActions";
 
 const StudentView = (props) => {
 
     const { studentId } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [openModal, setOpenModal] = useState(false);
+    const modalOpen = useSelector((state) => state.openmodal);
 
     const students = useSelector((state) => state.students);
 
@@ -17,12 +17,12 @@ const StudentView = (props) => {
 
     const deleteHandler = () => {
         dispatch(deleteStudent(studentItem.id));
-        setOpenModal(false);
+        dispatch(closeModal());
         navigate("/students");
     };
 
     const handleCloseModal = () => {
-        setOpenModal(false);
+        dispatch(closeModal())
     }
 
     if (!studentItem) {
@@ -35,11 +35,11 @@ const StudentView = (props) => {
                 <h2>{studentItem.name}</h2>
                 <p>{studentItem.subject}</p>
                 <h4>{studentItem.university}</h4>
-                <button onClick={() => setOpenModal(true)}>Delete Student</button>
+                <button onClick={() => dispatch(openModal())}>Delete Student</button>
             </div>
 
             <Modal
-                open={openModal}
+                open={modalOpen}
                 onClose={handleCloseModal}
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
@@ -48,7 +48,7 @@ const StudentView = (props) => {
                 <Box className="pd-modal__content">
                     <h2>Are you sure you want to delete this student?</h2>
 
-                    <Button variant="outlined" color="error" onClick={() => setOpenModal(false)}>
+                    <Button variant="outlined" color="error" onClick={handleCloseModal}>
                         Cancel
                     </Button>
 
