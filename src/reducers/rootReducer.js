@@ -73,7 +73,6 @@ const rootReducer = (state = initialState, action) => {
         return {
             ...state,
             iceCreams: state.iceCreams - 1
-
         }
 
     }

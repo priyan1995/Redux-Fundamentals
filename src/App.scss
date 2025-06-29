@@ -1,9 +1,15 @@
-[data-theme="dark"]{
-    background-color:black;
-    p,a,h2,label,h4{
+[data-theme="dark"] {
+    background-color: black;
+
+    p,
+    a,
+    h2,
+    label,
+    h4 {
         color: white;
     }
-    .post-items{
+
+    .post-items {
         background-color: gray;
     }
 }
@@ -50,7 +56,26 @@
     margin-top: 5px;
 }
 
-.student-view h2{
+.student-view h2 {
     margin-bottom: 2px;
     margin-top: 5px;
+}
+
+.pd-modal {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        background: white;
+        width: 450px;
+        border-radius: 15px;
+        padding: 20px;
+
+        button{
+            margin: 0 5px;
+        }
+    }
 }
