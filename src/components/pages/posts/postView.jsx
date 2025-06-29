@@ -1,8 +1,8 @@
 import { connect, useDispatch, useSelector } from "react-redux";
-import deletePost from "../actions/postActions";
+import deletePost from "../../../actions/postActions";
 import { useNavigate, useParams } from "react-router-dom";
-import { UiModal } from "./common/UiModal";
-import { closeModal, openModal } from "../actions/modalActions";
+import { UiModal } from "../../common/UiModal";
+import { closeModal, openModal } from "../../../actions/modalActions";
 
 const PostView = (props) => {
 

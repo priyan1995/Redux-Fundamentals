@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import deleteStudent from "../actions/studentActions";
+import deleteStudent from "../../../actions/studentActions";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Modal } from "@mui/material";
-import { closeModal, openModal } from "../actions/modalActions";
+import { closeModal, openModal } from "../../../actions/modalActions";
 
 const StudentView = (props) => {
 

@@ -1,6 +1,5 @@
 
 import { CLOSE_MODAL, DECREMENT_VALUE, INCREMENT_VLAUE, OPEN_MODAL } from "../actionTypes/actionType";
-import students from "../components/students";
 import { CarsData } from "../dataArrays/carsData";
 import { CountriesData } from "../dataArrays/CountriesData";
 import { IcecreamData } from "../dataArrays/iceCreamData";

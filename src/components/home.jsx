@@ -1,7 +1,7 @@
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import News from "./news";
+import News from "./pages/news/news";
 
 
 const Home = (props) => {

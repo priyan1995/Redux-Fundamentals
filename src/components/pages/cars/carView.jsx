@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import deleteCar from '../actions/carActions';
-import { UiModal } from './common/UiModal';
-import { closeModal, openModal } from '../actions/modalActions';
+import deleteCar from '../../../actions/carActions';
+import { UiModal } from '../../common/UiModal';
+import { closeModal, openModal } from '../../../actions/modalActions';
 
 const CarView = (props) => {
 

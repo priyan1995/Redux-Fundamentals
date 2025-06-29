@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory, useNavigate } from "react-router-dom";
-import deleteCountry from "../actions/countryActions";
+import deleteCountry from "../../../actions/countryActions";
 
 const CountryView = (props) => {
 

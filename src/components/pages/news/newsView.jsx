@@ -1,9 +1,9 @@
 
 import { connect, useDispatch, useSelector } from "react-redux";
-import deleteNews from "../actions/newsActions";
+import deleteNews from "../../../actions/newsActions";
 import { useNavigate, useParams } from "react-router-dom";
-import { UiModal } from "./common/UiModal";
-import { closeModal, openModal } from "../actions/modalActions";
+import { closeModal, openModal } from "../../../actions/modalActions";
+import { UiModal } from "../../common/UiModal";
 
 const NewsView = (props) => {
 

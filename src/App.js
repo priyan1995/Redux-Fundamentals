@@ -7,20 +7,20 @@ import {
   Routes,
   Link
 } from "react-router-dom";
-import NewsView from './components/newsView';
-import PostView from './components/postView';
-import Students from './components/students';
-import StudentView from './components/studentView';
-import Cars from './components/cars';
-import CarView from './components/carView';
-import IceCreams from './components/iceCreams';
-import countries from './components/countries';
-import CountryView from './components/countryView';
-import { Users } from './components/users';
+import PostView from './components/pages/posts/postView';
+import NewsView from './components/pages/news/newsView';
+import Students from './components/pages/student/students';
+import StudentView from './components/pages/student/studentView';
+import CarView from './components/pages/cars/carView';
+import CountryView from './components/pages/countries/countryView';
 import Increment from './components/Increment';
-import { Container, FormControlLabel } from '@mui/material';
-import { DarkModeButton } from './components/DarkModeButton';
-import Countries from './components/countries';
+import { Users } from './components/users';
+import Countries from './components/pages/countries/countries';
+import IceCreams from './components/iceCreams';
+import { DarkModeButton } from './components/common/DarkModeButton';
+import Cars from './components/pages/cars/cars';
+import { Container } from '@mui/material';
+
 
 function App() {
 
