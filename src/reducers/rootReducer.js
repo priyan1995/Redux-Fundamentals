@@ -1,4 +1,5 @@
 
+import { combineReducers } from "redux";
 import { CLOSE_MODAL, DECREMENT_VALUE, INCREMENT_VLAUE, OPEN_MODAL } from "../actionTypes/actionType";
 import { CarsData } from "../dataArrays/carsData";
 import { CountriesData } from "../dataArrays/CountriesData";
@@ -6,6 +7,7 @@ import { IcecreamData } from "../dataArrays/iceCreamData";
 import { NewsData } from "../dataArrays/newsData";
 import { PostsData } from "../dataArrays/postsData";
 import { StudentsData } from "../dataArrays/studentsData";
+import userReducer from "./userReducer";
 
 
 const initialState = {
@@ -129,5 +131,10 @@ const rootReducer = (state = initialState, action) => {
     return state;
 }
 
+const combinedReducer = combineReducers({
+    app: rootReducer,
+    user: userReducer
+})
 
-export default rootReducer;
+
+export default combinedReducer;
