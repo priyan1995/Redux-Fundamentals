@@ -1,6 +1,8 @@
 import { connect, useDispatch, useSelector } from "react-redux";
 import deletePost from "../actions/postActions";
 import { useNavigate, useParams } from "react-router-dom";
+import { UiModal } from "./common/UiModal";
+import { closeModal, openModal } from "../actions/modalActions";
 
 const PostView = (props) => {
 
@@ -10,19 +12,32 @@ const PostView = (props) => {
 
     const postItems = useSelector((state) => state.posts);
 
+    const modalOpen = useSelector((state) => state.openmodal);
+
     const postItem = postItems.find((s) => s.id === postId);
 
     const deleteHandler = () => {
         dispatch(deletePost(postItem.id))
+        dispatch(closeModal())
         navigate('/');
     }
-    console.log(postItem);
+
+    const handleCloseModal = () => {
+        dispatch(closeModal())
+    }
 
     return (
         <>
             <h2>{postItem.title}</h2>
             <p>{postItem.body}</p>
-            <button onClick={deleteHandler}>Delete</button>
+            <button onClick={() => dispatch(openModal())}>Delete</button>
+
+            <UiModal
+                title="Are you sure you want to delete this student?"
+                deleteHandler={deleteHandler}
+                modalOpen={modalOpen}
+                handleCloseModal={handleCloseModal}
+            />
         </>
     )
 
