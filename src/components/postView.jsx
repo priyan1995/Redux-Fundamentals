@@ -33,7 +33,7 @@ const PostView = (props) => {
             <button onClick={() => dispatch(openModal())}>Delete</button>
 
             <UiModal
-                title="Are you sure you want to delete this student?"
+                title="Are you sure you want to delete this Post?"
                 deleteHandler={deleteHandler}
                 modalOpen={modalOpen}
                 handleCloseModal={handleCloseModal}
