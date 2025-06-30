@@ -53,29 +53,8 @@ const UserView = (props) => {
                     {user.company.catchPhrase}
                     {user.company.bs}
                 </p>
-                <Button variant="contained" color="error">Delete User</Button>
             </div>
 
-            {/* <Modal
-                open={modalOpen}
-                onClose={handleCloseModal}
-                aria-labelledby="parent-modal-title"
-                aria-describedby="parent-modal-description"
-                className="pd-modal"
-            >
-                <Box className="pd-modal__content">
-                    <h2>Are you sure you want to delete this student?</h2>
-
-                    <Button variant="outlined" color="error" onClick={handleCloseModal}>
-                        Cancel
-                    </Button>
-
-                    <Button variant="contained" color="success" onClick={deleteHandler}>
-                        Confirm
-                    </Button>
-
-                </Box>
-            </Modal> */}
         </>
     );
 };
