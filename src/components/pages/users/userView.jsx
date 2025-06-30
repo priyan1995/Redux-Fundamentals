@@ -11,15 +11,30 @@ const UserView = (props) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const users = useSelector((state) => state.user.users);
+    const userLoading = useSelector((state) => state.user.loading);
+    const error = useSelector((state) => state.user.error);
 
     useEffect(() => {
-        dispatch(fetchUsers())
-    }, [dispatch])
+        if (users.length === 0) {
+            dispatch(fetchUsers())
+        }
+    }, [dispatch, users.length])
 
     const user = users.find((s) => s.id === parseInt(userId));
 
+    if (error) {
+        return <h4>{error}</h4>
+    }
+
+    if (userLoading || !user) {
+        return <h4>Loading</h4>
+    }
+
     return (
         <>
+
+
+
             <div className="pd-user-view">
                 <p>Name: {user.name}</p>
                 <p>User Name: {user.username}</p>
