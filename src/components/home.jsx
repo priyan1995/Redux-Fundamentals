@@ -8,8 +8,6 @@ const Home = (props) => {
 
     const postItems = useSelector((state)=>state.app.posts);
 
-    console.log(postItems)
-
     return (
         <>
             <h2 className="main-title">Posts</h2>

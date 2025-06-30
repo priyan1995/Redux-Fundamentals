@@ -43,7 +43,7 @@ const Increment = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        incVal: state.incrementAmount
+        incVal: state.app.incrementAmount
     }
 }
 

@@ -30,7 +30,7 @@ const IceCreams = (props) => {
 
 const mapStateToProps = (state) =>{
     return{
-        iceCream: state.iceCreams
+        iceCream: state.app.iceCreams
     }
 }
 

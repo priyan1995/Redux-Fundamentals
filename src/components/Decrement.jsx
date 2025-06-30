@@ -20,7 +20,7 @@ const Decrement = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        decrVal: state.incrementAmount
+        decrVal: state.app.incrementAmount
     }
 }
 
