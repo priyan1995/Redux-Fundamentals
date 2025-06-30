@@ -14,12 +14,13 @@ import StudentView from './components/pages/student/studentView';
 import CarView from './components/pages/cars/carView';
 import CountryView from './components/pages/countries/countryView';
 import Increment from './components/Increment';
-import { Users } from './components/users';
 import Countries from './components/pages/countries/countries';
 import IceCreams from './components/iceCreams';
 import { DarkModeButton } from './components/common/DarkModeButton';
 import Cars from './components/pages/cars/cars';
 import { Container } from '@mui/material';
+import { Users } from './components/pages/users/users';
+import UserView from './components/pages/users/userView';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/countries" element={<Countries />} />
             <Route path="/country-view/:countryId" element={<CountryView />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/users/:userId" element={<UserView />} />
             <Route path="/increment" element={<Increment />} />
           </Routes>
         </Router>

@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../actions/userActions";
+import { fetchUsers } from "../../../actions/userActions";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Users = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const users = useSelector((state) => state.user.users);
     const error = useSelector((state) => state.user.error);
     const loading = useSelector((state) => state.user.loading);
@@ -13,6 +16,9 @@ export const Users = () => {
         dispatch(fetchUsers())
     }, [dispatch])
 
+    const viewUser = (id) => {
+        navigate(`/users/${id}`)
+    }
 
     return (
         <>
@@ -48,6 +54,7 @@ export const Users = () => {
                                 {user.company.catchPhrase}
                                 {user.company.bs}
                             </p>
+                            <Button variant="contained" color="success" onClick={() => viewUser(user.id)}>View User</Button>
                         </div>
                     ))
             }

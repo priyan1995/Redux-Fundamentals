@@ -80,8 +80,20 @@
     }
 }
 
-.pd-user-info{
+.pd-user-info {
     padding: 15px;
     background: rgb(230, 230, 230);
     margin: 10px 0;
+}
+
+nav {
+    display: flex;
+    margin-bottom: 3rem;
+    background: #ededed;
+    padding: 10px;
+    border-radius: 8px;
+
+    a {
+        margin: 5px;
+    }
 }
