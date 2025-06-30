@@ -8,6 +8,7 @@ import { NewsData } from "../dataArrays/newsData";
 import { PostsData } from "../dataArrays/postsData";
 import { StudentsData } from "../dataArrays/studentsData";
 import userReducer from "./userReducer";
+import { booksReducer } from "./booksReducer";
 
 
 const initialState = {
@@ -133,7 +134,8 @@ const rootReducer = (state = initialState, action) => {
 
 const combinedReducer = combineReducers({
     app: rootReducer,
-    user: userReducer
+    user: userReducer,
+    books: booksReducer
 })
 
 

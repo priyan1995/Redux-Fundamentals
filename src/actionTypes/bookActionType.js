@@ -1,0 +1,7 @@
+export const FETCH_BOOK_START = "FETCH_BOOK_START";
+export const FETCH_BOOK_SUCCESS = "FETCH_BOOK_SUCCESS";
+export const FETCH_BOOK_ERROR = "FETCH_BOOK_ERROR";
+
+export const UPDATE_BOOK = "UPDATE_BOOK";
+export const ADD_BOOK = "ADD_BOOK";
+export const DELETE_BOOK = "DELETE_BOOK";

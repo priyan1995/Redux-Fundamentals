@@ -21,6 +21,7 @@ import Cars from './components/pages/cars/cars';
 import { Container } from '@mui/material';
 import { Users } from './components/pages/users/users';
 import UserView from './components/pages/users/userView';
+import { Books } from './components/pages/books/Books';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
             <Link to="/countries">Countries</Link><br />
             <Link to="/users">Users</Link><br />
             <Link to="/increment">Increment</Link>
+            <Link to="/books">Books</Link>
           </nav>
 
           <Routes>
@@ -59,6 +61,10 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/users/:userId" element={<UserView />} />
             <Route path="/increment" element={<Increment />} />
+
+            <Route path="/books" element={<Books />} />
+
+
           </Routes>
         </Router>
       </Container>
