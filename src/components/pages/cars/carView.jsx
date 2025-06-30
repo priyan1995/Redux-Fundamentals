@@ -11,9 +11,9 @@ const CarView = (props) => {
     const { carId } = useParams();
     const dispatch = useDispatch();
 
-    const cars = useSelector((state) => state.cars);
+    const cars = useSelector((state) => state.app.cars);
     const car = cars.find((s) => s.id === carId);
-    const modalOpen = useSelector((state) => state.openmodal);
+    const modalOpen = useSelector((state) => state.app.openmodal);
 
     const removeCar = () => {
         dispatch(deleteCar(car.id));

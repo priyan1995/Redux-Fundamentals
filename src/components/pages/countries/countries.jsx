@@ -1,10 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Countries = (props) => {
-    console.log(props.countries);
-    const countries = props.countries;
+
+    const countries = useSelector((state)=>state.app.countries);
     return (
         <>
             <h2>Countries</h2>
@@ -24,10 +24,6 @@ const Countries = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return{
-        countries: state.countries
-    }
-}
 
-export default connect(mapStateToProps)(Countries);
+
+export default Countries;

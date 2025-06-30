@@ -1,12 +1,14 @@
 
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import News from "./pages/news/news";
 
 
 const Home = (props) => {
 
-    const postItems = props.posts;
+    const postItems = useSelector((state)=>state.app.posts);
+
+    console.log(postItems)
 
     return (
         <>
@@ -32,10 +34,6 @@ const Home = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        posts: state.posts
-    }
-}
 
-export default connect(mapStateToProps)(Home)
+
+export default Home;

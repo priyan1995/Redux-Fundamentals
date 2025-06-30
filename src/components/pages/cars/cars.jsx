@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const Cars = (props) => {
 
-    const cars = useSelector((state) => state.cars);
+    const cars = useSelector((state) => state.app.cars);
 
     return (
         <>

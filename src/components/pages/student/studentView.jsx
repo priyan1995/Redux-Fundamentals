@@ -9,9 +9,9 @@ const StudentView = (props) => {
     const { studentId } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const modalOpen = useSelector((state) => state.openmodal);
+    const modalOpen = useSelector((state) => state.app.openmodal);
 
-    const students = useSelector((state) => state.students);
+    const students = useSelector((state) => state.app.students);
 
     const studentItem = students.find((s) => s.id === studentId);
 

@@ -11,9 +11,9 @@ const NewsView = (props) => {
     const dispatch = useDispatch();
     const { newsId } = useParams();
 
-    const newsItems = useSelector((state) => state.news);
+    const newsItems = useSelector((state) => state.app.news);
     const newsItem = newsItems.find((s) => s.id === newsId);
-    const modalOpen = useSelector((state)=>state.openmodal);
+    const modalOpen = useSelector((state)=>state.app.openmodal);
 
     const deleteHandeler = () => {
         dispatch(deleteNews(newsItem.id));

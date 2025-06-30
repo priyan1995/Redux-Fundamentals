@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Students = (props) => {
-    const students = props.students;
+    const students = useSelector((state)=>state.app.students);
 
     return (
         <>
@@ -19,8 +19,6 @@ const Students = (props) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-    students: state.students,
-});
 
-export default connect(mapStateToProps)(Students);
+
+export default Students;

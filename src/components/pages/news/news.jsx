@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const News = (props) => {
 
-    const news = useSelector((state) => state.news)
+    const news = useSelector((state) => state.app.news)
 
     return (
         <>

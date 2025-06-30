@@ -10,9 +10,9 @@ const PostView = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const postItems = useSelector((state) => state.posts);
+    const postItems = useSelector((state) => state.app.posts);
 
-    const modalOpen = useSelector((state) => state.openmodal);
+    const modalOpen = useSelector((state) => state.app.openmodal);
 
     const postItem = postItems.find((s) => s.id === postId);
 
