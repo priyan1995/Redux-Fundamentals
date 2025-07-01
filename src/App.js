@@ -22,6 +22,7 @@ import { Container } from '@mui/material';
 import { Users } from './components/pages/users/users';
 import UserView from './components/pages/users/userView';
 import { Books } from './components/pages/books/Books';
+import { ViewBook } from './components/pages/books/ViewBook';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
             <Route path="/increment" element={<Increment />} />
 
             <Route path="/books" element={<Books />} />
+            <Route path="/book-view/:bookId" element={<ViewBook />} />
 
 
           </Routes>
