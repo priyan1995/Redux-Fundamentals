@@ -11,6 +11,7 @@ export const Books = () => {
     const booksList = useSelector((state) => state.books.list);
     const isLoading = useSelector((state) => state.books.loading);
     const error = useSelector((state) => state.books.error);
+    const deleting = useSelector((state) => state.books.deleting);
 
     useEffect(() => {
         dispatch(fetchBooks())
@@ -18,8 +19,8 @@ export const Books = () => {
         [dispatch])
 
 
-    if (isLoading) {
-        return <h2>Loading...</h2>
+    if (deleting) {
+        return <h2>Deleting...</h2>
     }
 
     if (error) {
@@ -35,13 +36,15 @@ export const Books = () => {
             <h2>Books List</h2>
 
             {
-                booksList.map((book, index) => (
-                    <div className="pd-book-item" key={index}>
-                        <p><strong>Name : </strong>{book.title}</p>
-                        <p><strong>Description : </strong>{book.body}</p>
-                        <Button onClick={() => viewBook(book.id)}>View Book</Button>
-                    </div>
-                ))
+
+                isLoading ? <h2> Loading </h2> :
+                    booksList.map((book, index) => (
+                        <div className="pd-book-item" key={index}>
+                            <p><strong>Name : </strong>{book.title}</p>
+                            <p><strong>Description : </strong>{book.body}</p>
+                            <Button onClick={() => viewBook(book.id)}>View Book</Button>
+                        </div>
+                    ))
             }
         </>
     )

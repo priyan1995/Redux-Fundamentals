@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchBooks } from "../../../actions/bookActions";
+import { deleteBook, fetchBooks } from "../../../actions/bookActions";
 import { Button } from "@mui/material";
 import { UiModal } from "../../common/UiModal";
 import { closeModal, openModal } from "../../../actions/modalActions";
@@ -30,8 +30,10 @@ export const ViewBook = () => {
         dispatch(closeModal())
     }
 
-    const removeBook = () => {
-        
+    const removeBook = (id) => {
+        dispatch(deleteBook(id));
+        dispatch(closeModal());
+        navigate('/books')
     }
 
     return (
@@ -44,7 +46,7 @@ export const ViewBook = () => {
 
             <UiModal
                 title="Are you sure you want to delete this Book?"
-                deleteHandler={removeBook}
+                deleteHandler={()=>removeBook(bookItem.id)}
                 modalOpen={modalOpen}
                 handleCloseModal={handleCloseModal}
             />
