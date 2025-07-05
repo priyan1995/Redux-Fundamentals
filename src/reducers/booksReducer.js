@@ -1,11 +1,13 @@
-import { DELETE_BOOK, DELETE_BOOK_START, FETCH_BOOK_ERROR, FETCH_BOOK_START, FETCH_BOOK_SUCCESS } from "../actionTypes/bookActionType"
+import { ADD_BOOK_ERROR, ADD_BOOK_START, ADD_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_START, FETCH_BOOK_ERROR, FETCH_BOOK_START, FETCH_BOOK_SUCCESS } from "../actionTypes/bookActionType"
 
 
 const initialBookState = {
     list: [],
     loading: false,
     error: null,
-    deleting: false
+    deleting: false,
+    addingBook: false,
+    addingBookError: null
 }
 
 export const booksReducer = (state = initialBookState, action) => {
@@ -19,13 +21,34 @@ export const booksReducer = (state = initialBookState, action) => {
         case DELETE_BOOK_START:
             return {
                 ...state, deleting: true
+            };
+
+        case ADD_BOOK_START:
+            return {
+                ...state, addingBook: true, addingBookError: null
             }
+
+        case ADD_BOOK_SUCCESS:
+            return {
+                ...state,
+                addingBook: false,
+                list: [...state.list, action.payload]
+            };
+
+        case ADD_BOOK_ERROR:
+            return {
+                ...state,
+                addingBook: false,
+                error: action.payload
+            }
+
         case DELETE_BOOK:
             return {
                 ...state,
                 deleting: false,
                 list: state.list.filter((book) => book.id !== action.payload)
             };
+
         default:
             return state;
     }

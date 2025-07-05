@@ -1,4 +1,4 @@
-import { DELETE_BOOK, DELETE_BOOK_START, FETCH_BOOK_ERROR, FETCH_BOOK_START, FETCH_BOOK_SUCCESS } from "../actionTypes/bookActionType";
+import { ADD_BOOK_ERROR, ADD_BOOK_START, ADD_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_START, FETCH_BOOK_ERROR, FETCH_BOOK_START, FETCH_BOOK_SUCCESS } from "../actionTypes/bookActionType";
 
 
 const BookApiUrl = "https://jsonplaceholder.typicode.com/posts";
@@ -32,5 +32,36 @@ export const deleteBook = (id) => {
             return error;
         }
 
+    }
+}
+
+export const addBook = (newBook) => {
+    return async (dispatch) => {
+        dispatch({
+            type: ADD_BOOK_START
+        })
+
+        try {
+            const response = await fetch(BookApiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newBook)
+            });
+
+            const data = await response.json();
+
+            dispatch({
+                type: ADD_BOOK_SUCCESS,
+                payload: data
+            });
+
+        } catch (error) {
+            dispatch({
+                type: ADD_BOOK_ERROR,
+                payload: error.message
+            })
+        }
     }
 }
