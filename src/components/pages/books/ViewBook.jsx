@@ -36,9 +36,18 @@ export const ViewBook = () => {
         navigate('/books')
     }
 
+    const addBookPage = () => {
+        navigate('/add-book')
+    }
+
     return (
         <>
-            <h2>Book Details</h2>
+
+            <div className="df-title-w-button">
+                <h2>Book Details</h2>
+                <Button variant="contained" color="success" onClick={addBookPage} > Add New Book </Button>
+            </div>
+
 
             <h3>{bookItem.title}</h3>
             <p>{bookItem.body}</p>
@@ -46,7 +55,7 @@ export const ViewBook = () => {
 
             <UiModal
                 title="Are you sure you want to delete this Book?"
-                deleteHandler={()=>removeBook(bookItem.id)}
+                deleteHandler={() => removeBook(bookItem.id)}
                 modalOpen={modalOpen}
                 handleCloseModal={handleCloseModal}
             />

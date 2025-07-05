@@ -23,6 +23,7 @@ import { Users } from './components/pages/users/users';
 import UserView from './components/pages/users/userView';
 import { Books } from './components/pages/books/Books';
 import { ViewBook } from './components/pages/books/ViewBook';
+import { AddBook } from './components/pages/books/AddBook';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
 
             <Route path="/books" element={<Books />} />
             <Route path="/book-view/:bookId" element={<ViewBook />} />
+            <Route path="/add-book" element={<AddBook />} />
 
 
           </Routes>
