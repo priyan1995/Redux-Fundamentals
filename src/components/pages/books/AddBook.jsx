@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UiInput } from "../../common/UiInput";
 import { addBook } from "../../../actions/bookActions";
+import { useNavigate } from "react-router-dom";
 
 export const AddBook = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { addingBook, addingBookError } = useSelector((state) => state.books);
 
     const [formData, setFormData] = useState({
@@ -28,9 +30,11 @@ export const AddBook = () => {
             body: ""
         })
 
+        navigate('/books')
+
     }
 
-    console.log(formData.title)
+
 
 
 
@@ -46,7 +50,18 @@ export const AddBook = () => {
                     value={formData.title}
                     name="title"
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    required
                 />
+
+                <UiInput
+                    type="text"
+                    label="Desciption"
+                    value={formData.body}
+                    name="body"
+                    onChange={(e) => setFormData({ ...formData, body: e.target.value })}
+                    required
+                />
+
 
                 <Button
                     type="submit"
@@ -63,7 +78,6 @@ export const AddBook = () => {
                 {
                     addingBookError &&
                     <p className="text-red"> {addingBookError}</p>
-
                 }
             </Box>
 

@@ -17,7 +17,7 @@ export const UiInput = (props) => {
                     value={props.value}
                     onChange={props.onChange}
                     fullWidth
-                    required
+                    required={props.required}
                     className="mb-2 MuiInputBase-input MuiOutlinedInput-input"
                 />
 

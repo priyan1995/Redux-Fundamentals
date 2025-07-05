@@ -31,9 +31,17 @@ export const Books = () => {
         navigate(`/book-view/${id}`);
     }
 
+    const addBookPage = () => {
+        navigate('/add-book');
+    }
+
     return (
         <>
-            <h2>Books List</h2>
+            <div className="df-title-w-button">
+                <h2>Books List</h2>
+                <Button variant="contained" color="success" onClick={addBookPage} > Add New Book </Button>
+            </div>
+
 
             {
 
