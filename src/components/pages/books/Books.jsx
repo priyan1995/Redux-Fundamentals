@@ -12,6 +12,7 @@ export const Books = () => {
     const isLoading = useSelector((state) => state.books.loading);
     const error = useSelector((state) => state.books.error);
     const deleting = useSelector((state) => state.books.deleting);
+    const addingBookLoading = useSelector((state)=>state.books.addingBook);
 
     useEffect(() => {
         dispatch(fetchBooks())
@@ -45,8 +46,10 @@ export const Books = () => {
 
             {
 
-                isLoading ? <h2> Loading </h2> :
-                    booksList.map((book, index) => (
+                isLoading || addingBookLoading  ? <h2> Loading </h2> :
+                [...booksList]
+                .sort((a,b)=>b.id - a.id)
+                    .map((book, index) => (
                         <div className="pd-book-item" key={index}>
                             <p><strong>Name : </strong>{book.title}</p>
                             <p><strong>Description : </strong>{book.body}</p>
