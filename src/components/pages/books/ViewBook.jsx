@@ -40,12 +40,19 @@ export const ViewBook = () => {
         navigate('/add-book')
     }
 
+    const editBookPage = (id) => {
+        navigate(`/edit-book/${id}`)
+    }
+
     return (
         <>
 
             <div className="df-title-w-button">
                 <h2>Book Details</h2>
-                <Button variant="contained" color="success" onClick={addBookPage} > Add New Book </Button>
+                <div>
+                    <Button className="mr-1" variant="contained" color="success" onClick={addBookPage} > Add New Book </Button>
+                    <Button variant="contained" color="info" onClick={() => editBookPage(bookItem.id)} > Edit Book </Button>
+                </div>
             </div>
 
 

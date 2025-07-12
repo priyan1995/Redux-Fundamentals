@@ -24,6 +24,7 @@ import UserView from './components/pages/users/userView';
 import { Books } from './components/pages/books/Books';
 import { ViewBook } from './components/pages/books/ViewBook';
 import { AddBook } from './components/pages/books/AddBook';
+import { EditBook } from './components/pages/books/EditBook';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/book-view/:bookId" element={<ViewBook />} />
             <Route path="/add-book" element={<AddBook />} />
+            <Route path="/edit-book/:bookId" element={<EditBook />} />
 
 
           </Routes>
