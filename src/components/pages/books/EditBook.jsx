@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { UiInput } from "../../common/UiInput";
 import { editBook } from "../../../actions/bookActions";
+import { UiModal } from "../../common/UiModal";
 
 export const EditBook = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { bookId } = useParams();
+    const [editModalOpen, setEditModalOpen] = useState(false);
 
 
     const { editingBook, editingBookError } = useSelector((state) => state.books);
@@ -24,11 +26,17 @@ export const EditBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setEditModalOpen(true);
+    }
 
+    const editBookConfitmation = () => {
         dispatch(editBook(formdata, parseInt(bookId)));
-
+        setEditModalOpen(false)
         navigate('/books');
+    }
 
+    const handleCloseModal = () => {
+        setEditModalOpen(false);
     }
 
     if (!book) {
@@ -78,6 +86,13 @@ export const EditBook = () => {
                     <p className="text-red"> {editingBookError}</p>
                 }
             </Box>
+
+            <UiModal
+                title="Are you sure you want to update this Book?"
+                deleteHandler={editBookConfitmation}
+                modalOpen={editModalOpen}
+                handleCloseModal={handleCloseModal}
+            />
 
 
         </>
