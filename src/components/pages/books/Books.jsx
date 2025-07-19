@@ -13,6 +13,7 @@ export const Books = () => {
     const error = useSelector((state) => state.books.error);
     const deleting = useSelector((state) => state.books.deleting);
     const addingBookLoading = useSelector((state)=>state.books.addingBook);
+    const editBookLoading = useSelector((state)=>state.books.editingBook);
 
     useEffect(() => {
         dispatch(fetchBooks())
@@ -46,7 +47,7 @@ export const Books = () => {
 
             {
 
-                isLoading || addingBookLoading  ? <h2> Loading </h2> :
+                isLoading || addingBookLoading || editBookLoading ? <h2> Loading </h2> :
                 [...booksList]
                 .sort((a,b)=>b.id - a.id)
                     .map((book, index) => (
