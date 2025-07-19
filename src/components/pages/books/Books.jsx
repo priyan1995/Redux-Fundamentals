@@ -44,9 +44,7 @@ export const Books = () => {
                 <Button variant="contained" color="success" onClick={addBookPage} > Add New Book </Button>
             </div>
 
-
             {
-
                 isLoading || addingBookLoading || editBookLoading ? <h2> Loading </h2> :
                 [...booksList]
                 .sort((a,b)=>b.id - a.id)

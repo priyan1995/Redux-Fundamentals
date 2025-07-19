@@ -5,13 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UiInput } from "../../common/UiInput";
 import { editBook } from "../../../actions/bookActions";
 import { UiModal } from "../../common/UiModal";
+import { closeModal, openModal } from "../../../actions/modalActions";
 
 export const EditBook = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { bookId } = useParams();
-    const [editModalOpen, setEditModalOpen] = useState(false);
+    const editModalOpen = useSelector((state)=> state.app.openmodal);
 
 
     const { editingBook, editingBookError } = useSelector((state) => state.books);
@@ -26,17 +27,17 @@ export const EditBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setEditModalOpen(true);
+        dispatch(openModal())
     }
 
     const editBookConfitmation = () => {
         dispatch(editBook(formdata, parseInt(bookId)));
-        setEditModalOpen(false)
+        dispatch(closeModal());
         navigate('/books');
     }
 
     const handleCloseModal = () => {
-        setEditModalOpen(false);
+        dispatch(closeModal());
     }
 
     if (!book) {
