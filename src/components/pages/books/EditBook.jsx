@@ -1,8 +1,9 @@
 import { Box, Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { UiInput } from "../../common/UiInput";
+import { editBook } from "../../../actions/bookActions";
 
 export const EditBook = () => {
 
@@ -16,9 +17,22 @@ export const EditBook = () => {
 
     const book = booksList.find((b) => b.id === parseInt(bookId));
 
+    const [formdata, setFormData] = useState({
+        title: book?.title || '',
+        body: book?.body || ''
+    })
 
     const handleSubmit = (e) => {
+        e.preventDefault();
 
+        dispatch(editBook(formdata, parseInt(bookId)));
+
+        navigate('/books');
+
+    }
+
+    if (!book) {
+        return <p>Book not found</p>
     }
 
 
@@ -34,13 +48,17 @@ export const EditBook = () => {
                     label="Title"
                     name="title"
                     required
+                    value={formdata.title}
+                    onChange={(e) => setFormData({ ...formdata, title: e.target.value })}
                 />
 
                 <UiInput
                     type="text"
                     label="Desciption"
                     name="body"
+                    value={formdata.body}
                     required
+                    onChange={(e) => setFormData({ ...formdata, body: e.target.value })}
                 />
 
 
@@ -50,15 +68,15 @@ export const EditBook = () => {
                     color="primary"
                     fullWidth
                 >
-                    {/* {
-                        addingBook ? "Adding Book" : "Add Book"
-                    } */}
+                    {
+                        editingBook ? "Loading..." : "Edit Book"
+                    }
                 </Button>
 
-                {/* {
-                    addingBookError &&
-                    <p className="text-red"> {addingBookError}</p>
-                } */}
+                {
+                    editingBookError &&
+                    <p className="text-red"> {editingBookError}</p>
+                }
             </Box>
 
 

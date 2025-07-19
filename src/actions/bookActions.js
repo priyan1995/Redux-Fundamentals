@@ -67,7 +67,7 @@ export const addBook = (newBook) => {
     }
 }
 
-export const editBook = (id,updateBook) => {
+export const editBook = (updateBook, id) => {
 
     return async (dispatch) => {
 
@@ -77,7 +77,7 @@ export const editBook = (id,updateBook) => {
 
         try {
 
-            const response = await fetch (`${BookApiUrl}/${id}`, {
+            const response = await fetch(`${BookApiUrl}/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -89,9 +89,9 @@ export const editBook = (id,updateBook) => {
 
             dispatch({
                 type: EDIT_BOOK_SUCCESS,
-                payload:data
+                payload: data
             })
-            
+
         } catch (error) {
             dispatch({
                 type: EDIT_BOOK_ERROR,
@@ -99,5 +99,5 @@ export const editBook = (id,updateBook) => {
             })
         }
     }
-    
+
 }
