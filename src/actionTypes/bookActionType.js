@@ -10,3 +10,8 @@ export const ADD_BOOK_ERROR = "ADD_BOOK_ERROR";
 
 export const DELETE_BOOK = "DELETE_BOOK";
 export const DELETE_BOOK_START = "DELETE_BOOK_START";
+
+
+export const EDIT_BOOK_START = "EDIT_BOOK_START";
+export const EDIT_BOOK_SUCCESS = "EDIT_BOOK_SUCCESS";
+export const EDIT_BOOK_ERROR = "EDIT_BOOK_ERROR";
