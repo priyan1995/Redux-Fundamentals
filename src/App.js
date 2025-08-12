@@ -26,7 +26,7 @@ import { ViewBook } from './components/pages/books/ViewBook';
 import { AddBook } from './components/pages/books/AddBook';
 import { EditBook } from './components/pages/books/EditBook';
 import { Login } from './components/auth/Login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from './actions/authActions';
 import { PrivateRoute } from './components/auth/PrivateRoute';
 
@@ -38,6 +38,8 @@ function App() {
     dispatch(logout())
   }
 
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
   return (
     <div className="App">
 
@@ -46,25 +48,36 @@ function App() {
 
       <Container>
         <Router>
-          <nav>
-            <Link to="/">Home</Link><br />
-            <Link to="/students">Students</Link><br />
-            <Link to="/cars">Cars</Link><br />
-            <Link to="/ice-creams">Ice Creams</Link><br />
-            <Link to="/countries">Countries</Link><br />
-            <Link to="/users">Users</Link><br />
-            <Link to="/increment">Increment</Link>
-            <Link to="/books">Books</Link>
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className='pd-nav-logout'
-              onClick={logouthandler}
-            >Logout</Button>
+          {
+            isAuthenticated &&
+            <>
+              <nav>
 
-          </nav>
+                <Link to="/">Home</Link><br />
+                <Link to="/students">Students</Link><br />
+                <Link to="/cars">Cars</Link><br />
+                <Link to="/ice-creams">Ice Creams</Link><br />
+                <Link to="/countries">Countries</Link><br />
+                <Link to="/users">Users</Link><br />
+                <Link to="/increment">Increment</Link>
+                <Link to="/books">Books</Link>
+
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className='pd-nav-logout'
+                  onClick={logouthandler}
+                >Logout</Button>
+
+              </nav>
+            </>
+          }
+
+
+
+
 
           <Routes>
             <Route path='/login' element={<Login />} />
