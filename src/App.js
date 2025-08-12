@@ -28,6 +28,7 @@ import { EditBook } from './components/pages/books/EditBook';
 import { Login } from './components/auth/Login';
 import { useDispatch } from 'react-redux';
 import { logout } from './actions/authActions';
+import { PrivateRoute } from './components/auth/PrivateRoute';
 
 function App() {
 
@@ -68,24 +69,24 @@ function App() {
           <Routes>
             <Route path='/login' element={<Login />} />
 
-            <Route path='/' element={<Home />} />
-            <Route path="/post-view/:postId" element={<PostView />} />
-            <Route path="/news-view/:newsId" element={<NewsView />} />
-            <Route path="/students" element={<Students />} />
-            <Route path="/student-view/:studentId" element={<StudentView />} />
-            <Route path="/cars" element={<Cars />} />
-            <Route path="/car-view/:carId" element={<CarView />} />
-            <Route path="/ice-creams" element={<IceCreams />} />
-            <Route path="/countries" element={<Countries />} />
-            <Route path="/country-view/:countryId" element={<CountryView />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/users/:userId" element={<UserView />} />
-            <Route path="/increment" element={<Increment />} />
+            <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/post-view/:postId" element={<PrivateRoute><PostView /></PrivateRoute>} />
+            <Route path="/news-view/:newsId" element={<PrivateRoute><NewsView /></PrivateRoute>} />
+            <Route path="/students" element={<PrivateRoute><Students /></PrivateRoute>} />
+            <Route path="/student-view/:studentId" element={<PrivateRoute><StudentView /></PrivateRoute>} />
+            <Route path="/cars" element={<PrivateRoute><Cars /></PrivateRoute>} />
+            <Route path="/car-view/:carId" element={<PrivateRoute><CarView /></PrivateRoute>} />
+            <Route path="/ice-creams" element={<PrivateRoute><IceCreams /></PrivateRoute>} />
+            <Route path="/countries" element={<PrivateRoute><Countries /></PrivateRoute>} />
+            <Route path="/country-view/:countryId" element={<PrivateRoute><CountryView /></PrivateRoute>} />
+            <Route path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+            <Route path="/users/:userId" element={<PrivateRoute><UserView /></PrivateRoute>} />
+            <Route path="/increment" element={<PrivateRoute><Increment /></PrivateRoute>} />
 
-            <Route path="/books" element={<Books />} />
-            <Route path="/book-view/:bookId" element={<ViewBook />} />
-            <Route path="/add-book" element={<AddBook />} />
-            <Route path="/edit-book/:bookId" element={<EditBook />} />
+            <Route path="/books" element={<PrivateRoute><Books /></PrivateRoute>} />
+            <Route path="/book-view/:bookId" element={<PrivateRoute><ViewBook /></PrivateRoute>} />
+            <Route path="/add-book" element={<PrivateRoute><AddBook /></PrivateRoute>} />
+            <Route path="/edit-book/:bookId" element={<PrivateRoute><EditBook /></PrivateRoute>} />
 
 
           </Routes>
