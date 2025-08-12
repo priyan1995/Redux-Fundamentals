@@ -18,18 +18,24 @@ import Countries from './components/pages/countries/countries';
 import IceCreams from './components/iceCreams';
 import { DarkModeButton } from './components/common/DarkModeButton';
 import Cars from './components/pages/cars/cars';
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { Users } from './components/pages/users/users';
 import UserView from './components/pages/users/userView';
 import { Books } from './components/pages/books/Books';
 import { ViewBook } from './components/pages/books/ViewBook';
 import { AddBook } from './components/pages/books/AddBook';
 import { EditBook } from './components/pages/books/EditBook';
-
+import { Login } from './components/auth/Login';
+import { useDispatch } from 'react-redux';
+import { logout } from './actions/authActions';
 
 function App() {
 
+  const dispatch = useDispatch()
 
+  const logouthandler = () => {
+    dispatch(logout())
+  }
 
   return (
     <div className="App">
@@ -48,9 +54,20 @@ function App() {
             <Link to="/users">Users</Link><br />
             <Link to="/increment">Increment</Link>
             <Link to="/books">Books</Link>
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className='pd-nav-logout'
+              onClick={logouthandler}
+            >Logout</Button>
+
           </nav>
 
           <Routes>
+            <Route path='/login' element={<Login />} />
+
             <Route path='/' element={<Home />} />
             <Route path="/post-view/:postId" element={<PostView />} />
             <Route path="/news-view/:newsId" element={<NewsView />} />
