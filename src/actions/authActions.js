@@ -2,7 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import { LOGIN, LOGIN_FAILED, LOGOUT } from "../actionTypes/authActionType"
 
 export const login = (username, password) => {
-    if (username === "admin" && password === "1234") {
+    if (username === "admin" && password === "openme") {
         return {
             type: LOGIN,
             payload: { username }
