@@ -29,6 +29,7 @@ import { Login } from './components/auth/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from './actions/authActions';
 import { PrivateRoute } from './components/auth/PrivateRoute';
+import { ImageUpload } from './components/pages/imageUpload/ImageUpload';
 
 function App() {
 
@@ -100,6 +101,9 @@ function App() {
             <Route path="/book-view/:bookId" element={<PrivateRoute><ViewBook /></PrivateRoute>} />
             <Route path="/add-book" element={<PrivateRoute><AddBook /></PrivateRoute>} />
             <Route path="/edit-book/:bookId" element={<PrivateRoute><EditBook /></PrivateRoute>} />
+
+            <Route path="/upload-image" element={<PrivateRoute><ImageUpload /></PrivateRoute>} />
+
 
 
           </Routes>
