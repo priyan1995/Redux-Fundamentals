@@ -1,39 +1,25 @@
 import { Container, FormControlLabel, Switch } from "@mui/material";
 import React from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 export const DarkModeButton = () => {
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
-    const setDarkTheme = () => {
-        document.querySelector('body').setAttribute("data-theme", "dark");
-    }
-
-    const setLightTheme = () => {
-        document.querySelector('body').setAttribute("data-theme", "light");
-    }
-
-    const handleDarkMode = (e) => {
-        if(e.target.checked){
-            setDarkTheme();
-        }else{
-            setLightTheme();
+  return (
+    <Container align="right">
+      <FormControlLabel
+        sx={{ display: 'block' }}
+        control={
+          <Switch
+            checked={isDark}
+            onChange={toggleTheme}
+            name="Theme"
+            color="primary"
+          />
         }
-    }
-    return (
-        <>
-            <Container align="right">
-                <FormControlLabel
-                    sx={{ display: 'block' }}
-                    control={
-                        <Switch
-                            onChange={handleDarkMode}
-                            name="Dark Mode"
-                            color="primary"
-                        />
-                    }
-                    label="Dark Mode"
-                />
-            </Container>
-
-        </>
-    )
-}
+        label="Dark Mode"
+      />
+    </Container>
+  );
+};

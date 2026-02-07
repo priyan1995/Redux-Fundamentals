@@ -2,11 +2,12 @@ import './App.scss';
 import Home from './components/home';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Routes,
   Link
 } from "react-router-dom";
+import { ThemeProvider } from './context/ThemeContext';
+import { ThemeFromRoute } from './components/theme/ThemeFromRoute';
 import PostView from './components/pages/posts/postView';
 import NewsView from './components/pages/news/newsView';
 import Students from './components/pages/student/students';
@@ -43,45 +44,40 @@ function App() {
 
   return (
     <div className="App">
+      <Router>
+        <ThemeProvider>
+          <DarkModeButton />
 
-      <DarkModeButton />
+          <Container>
+            {
+              isAuthenticated &&
+              <>
+                <nav>
 
+                  <Link to="/">Home</Link><br />
+                  <Link to="/students">Students</Link><br />
+                  <Link to="/cars">Cars</Link><br />
+                  <Link to="/ice-creams">Ice Creams</Link><br />
+                  <Link to="/countries">Countries</Link><br />
+                  <Link to="/users">Users</Link><br />
+                  <Link to="/increment">Increment</Link>
+                  <Link to="/books">Books</Link>
 
-      <Container>
-        <Router>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    className='pd-nav-logout'
+                    onClick={logouthandler}
+                  >Logout</Button>
 
-          {
-            isAuthenticated &&
-            <>
-              <nav>
+                </nav>
+              </>
+            }
 
-                <Link to="/">Home</Link><br />
-                <Link to="/students">Students</Link><br />
-                <Link to="/cars">Cars</Link><br />
-                <Link to="/ice-creams">Ice Creams</Link><br />
-                <Link to="/countries">Countries</Link><br />
-                <Link to="/users">Users</Link><br />
-                <Link to="/increment">Increment</Link>
-                <Link to="/books">Books</Link>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  className='pd-nav-logout'
-                  onClick={logouthandler}
-                >Logout</Button>
-
-              </nav>
-            </>
-          }
-
-
-
-
-
-          <Routes>
-            <Route path='/login' element={<Login />} />
+            <Routes>
+              <Route path="/theme/:mode" element={<ThemeFromRoute />} />
+              <Route path='/login' element={<Login />} />
 
             <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
             <Route path="/post-view/:postId" element={<PrivateRoute><PostView /></PrivateRoute>} />
@@ -103,12 +99,10 @@ function App() {
             <Route path="/edit-book/:bookId" element={<PrivateRoute><EditBook /></PrivateRoute>} />
 
             <Route path="/upload-image" element={<PrivateRoute><ImageUpload /></PrivateRoute>} />
-
-
-
           </Routes>
-        </Router>
-      </Container>
+          </Container>
+        </ThemeProvider>
+      </Router>
     </div>
   );
 }
