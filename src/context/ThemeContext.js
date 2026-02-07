@@ -4,9 +4,14 @@ const ThemeContext = createContext();
 
 const THEME_KEY = 'app-theme';
 
+function getSystemTheme() {
+  if (typeof window === 'undefined' || !window.matchMedia) return 'light';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState(() => {
-    return localStorage.getItem(THEME_KEY) || 'light';
+    return localStorage.getItem(THEME_KEY) || getSystemTheme();
   });
 
   useEffect(() => {
