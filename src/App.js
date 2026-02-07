@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.scss';
 import Home from './components/home';
 import {
@@ -19,7 +20,7 @@ import Countries from './components/pages/countries/countries';
 import IceCreams from './components/iceCreams';
 import { DarkModeButton } from './components/common/DarkModeButton';
 import Cars from './components/pages/cars/cars';
-import { Button, Container } from '@mui/material';
+import { Button, Container, Menu, MenuItem } from '@mui/material';
 import { Users } from './components/pages/users/users';
 import UserView from './components/pages/users/userView';
 import { Books } from './components/pages/books/Books';
@@ -32,15 +33,32 @@ import { logout } from './actions/authActions';
 import { PrivateRoute } from './components/auth/PrivateRoute';
 import { ImageUpload } from './components/pages/imageUpload/ImageUpload';
 
-function App() {
+const postsMenuItems = [
+  { label: 'Students', to: '/students' },
+  { label: 'Cars', to: '/cars' },
+  { label: 'Ice Creams', to: '/ice-creams' },
+  { label: 'Countries', to: '/countries' },
+  { label: 'Users', to: '/users' },
+  { label: 'Increment', to: '/increment' },
+  { label: 'Books', to: '/books' },
+];
 
-  const dispatch = useDispatch()
+function App() {
+  const [postsAnchor, setPostsAnchor] = React.useState(null);
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   const logouthandler = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const openPostsMenu = (e) => {
+    setPostsAnchor(e.currentTarget);
+  };
+
+  const closePostsMenu = () => {
+    setPostsAnchor(null);
+  };
 
   return (
     <div className="App">
@@ -53,24 +71,43 @@ function App() {
               isAuthenticated &&
               <>
                 <nav>
-
-                  <Link to="/">Home</Link><br />
-                  <Link to="/students">Students</Link><br />
-                  <Link to="/cars">Cars</Link><br />
-                  <Link to="/ice-creams">Ice Creams</Link><br />
-                  <Link to="/countries">Countries</Link><br />
-                  <Link to="/users">Users</Link><br />
-                  <Link to="/increment">Increment</Link>
-                  <Link to="/books">Books</Link>
+                  <Link to="/" className="pd-nav-link">Home</Link>
 
                   <Button
-                    type="submit"
+                    className="pd-nav-link pd-nav-posts-trigger"
+                    onClick={openPostsMenu}
+                    aria-controls={postsAnchor ? 'posts-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={postsAnchor ? 'true' : undefined}
+                  >
+                    Posts
+                  </Button>
+                  <Menu
+                    id="posts-menu"
+                    anchorEl={postsAnchor}
+                    open={Boolean(postsAnchor)}
+                    onClose={closePostsMenu}
+                    MenuListProps={{ 'aria-labelledby': 'posts-menu-button' }}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                    slotProps={{ paper: { className: 'pd-posts-menu-paper' } }}
+                  >
+                    {postsMenuItems.map((item) => (
+                      <MenuItem key={item.to} component={Link} to={item.to} onClick={closePostsMenu}>
+                        {item.label}
+                      </MenuItem>
+                    ))}
+                  </Menu>
+
+                  <Button
+                    type="button"
                     variant="contained"
                     color="primary"
-                    className='pd-nav-logout'
+                    className="pd-nav-logout"
                     onClick={logouthandler}
-                  >Logout</Button>
-
+                  >
+                    Logout
+                  </Button>
                 </nav>
               </>
             }

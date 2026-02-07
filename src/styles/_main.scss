@@ -16,6 +16,27 @@
     .post-items {
         background-color: gray;
     }
+
+    nav {
+        background: #2d2d2d;
+
+        .pd-nav-posts-trigger:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    .pd-posts-menu-paper {
+        background: #0d0d0d;
+        color: #fff;
+
+        .MuiMenuItem-root {
+            color: #fff;
+        }
+
+        .MuiMenuItem-root:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+    }
 }
 
 .post-items {
@@ -93,6 +114,7 @@
 
 nav {
     display: flex;
+    align-items: center;
     margin-bottom: 3rem;
     background: #ededed;
     padding: 10px;
@@ -100,6 +122,33 @@ nav {
 
     a {
         margin: 5px;
+    }
+
+    .pd-nav-link {
+        margin: 5px;
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+        color: gray;
+    }
+
+    .pd-nav-posts-trigger {
+        min-width: auto;
+        text-transform: none;
+        color: inherit;
+        background: transparent;
+        padding: 0;
+        font-family: "Montserrat", sans-serif !important;
+        color: gray;
+        font-weight: 400;
+        margin: 5px;
+        min-height: unset;
+        height: unset;
+        line-height: unset;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
     }
 }
 
