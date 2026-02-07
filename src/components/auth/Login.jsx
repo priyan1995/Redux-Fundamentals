@@ -1,72 +1,76 @@
-import { Box, Button } from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { UiInput } from "../common/UiInput";
-import { login } from "../../actions/authActions";
+import { Box, Button } from '@mui/material';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { UiInput } from '../common/UiInput';
+import { login } from '../../actions/authActions';
 
-export const Login = () => {
+export function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loginError = useSelector((state) => state.auth.loginError);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-
-    const loginSubmit = (e) => {
-        e.preventDefault();
-        dispatch(login(username, password));
-        if (username === "admin" && password === "1234") {
-            navigate('/');
-        } else {
-            alert("Invalid Credentials");
-        }
-
-        if (isAuthenticated) {
-            navigate('/');
-        }
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
     }
+  }, [isAuthenticated, navigate]);
 
-    return (
-        <>
-            <h2 className="main-title">Login</h2>
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(login(username, password));
+    },
+    [dispatch, username, password]
+  );
 
-            <Box component="form" onSubmit={loginSubmit}>
+  const handleUsernameChange = useCallback((e) => {
+    setUsername(e.target.value);
+  }, []);
 
-                <UiInput
-                    type="text"
-                    label="Username"
-                    name="Username"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+  const handlePasswordChange = useCallback((e) => {
+    setPassword(e.target.value);
+  }, []);
 
-                <UiInput
-                    type="password"
-                    label="Password"
-                    name="Password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+  return (
+    <>
+      <h2 className="main-title">Login</h2>
 
+      <Box component="form" onSubmit={handleSubmit} noValidate>
+        <UiInput
+          type="text"
+          label="Username"
+          name="username"
+          autoComplete="username"
+          required
+          value={username}
+          onChange={handleUsernameChange}
+        />
 
+        <UiInput
+          type="password"
+          label="Password"
+          name="password"
+          autoComplete="current-password"
+          required
+          value={password}
+          onChange={handlePasswordChange}
+        />
 
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                >
-                    Login
-                </Button>
+        {loginError && (
+          <p className="text-red" role="alert">
+            {loginError}
+          </p>
+        )}
 
-
-
-            </Box>
-        </>
-    )
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Login
+        </Button>
+      </Box>
+    </>
+  );
 }
