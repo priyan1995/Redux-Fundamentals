@@ -1,11 +1,19 @@
-import { connect, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import News from "./pages/news/news";
 import { Button } from "@mui/material";
 
-const Home = (props) => {
-  const postItems = useSelector((state) => state.app.posts);
+const PostItem = lazy(() => import("./PostItem"));
 
+const PostListFallback = () => (
+  <div className="post-items post-items-placeholder" aria-hidden="true">
+    Loading…
+  </div>
+);
+
+const Home = () => {
+  const postItems = useSelector((state) => state.app.posts);
   const navigate = useNavigate();
 
   const imageUploadUrl = () => {
@@ -26,17 +34,11 @@ const Home = (props) => {
 
       <h2 className="main-title">Posts</h2>
 
-      {postItems.map((post) => {
-        return (
-          <>
-            <div className="post-items" key={post.id}>
-              <h4>{post.title}</h4>
-              <p>{post.body}</p>
-              <Link to={`/post-view/${post.id}`}>Read More</Link>
-            </div>
-          </>
-        );
-      })}
+      <Suspense fallback={<PostListFallback />}>
+        {postItems.map((post) => (
+          <PostItem key={post.id} post={post} />
+        ))}
+      </Suspense>
 
       <News />
     </>
