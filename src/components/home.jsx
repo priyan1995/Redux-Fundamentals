@@ -1,20 +1,8 @@
-import React, { lazy } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import News from "./pages/news/news";
 import { Button } from "@mui/material";
-import { LazyList } from "./common/LazyList";
-
-const PostItem = lazy(() => import("./PostItem"));
-
-const postListFallback = (
-  <div className="post-items post-items-placeholder" aria-hidden="true">
-    Loading…
-  </div>
-);
 
 const Home = () => {
-  const postItems = useSelector((state) => state.app.posts);
   const navigate = useNavigate();
 
   const imageUploadUrl = () => {
@@ -32,18 +20,6 @@ const Home = () => {
       >
         Image Upload
       </Button>
-
-      <h2 className="main-title">Posts</h2>
-
-      <LazyList
-        items={postItems}
-        LazyComponent={PostItem}
-        getKey={(post) => post.id}
-        getProps={(post) => ({ post })}
-        fallback={postListFallback}
-      />
-
-      <News />
     </>
   );
 };

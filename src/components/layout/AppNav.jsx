@@ -5,6 +5,8 @@ import { Button, Menu, MenuItem } from '@mui/material';
 import { logout } from '../../actions/authActions';
 
 const POSTS_MENU_ITEMS = [
+  { label: 'Posts', to: '/posts' },
+  { label: 'News', to: '/news' },
   { label: 'Students', to: '/students' },
   { label: 'Cars', to: '/cars' },
   { label: 'Ice Creams', to: '/ice-creams' },

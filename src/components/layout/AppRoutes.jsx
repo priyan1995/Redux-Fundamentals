@@ -5,6 +5,8 @@ import { PrivateRoute } from '../auth/PrivateRoute';
 import { Login } from '../auth/Login';
 import Home from '../home';
 import PostView from '../pages/posts/postView';
+import { PostsListing } from '../pages/posts/postsListing';
+import News from '../pages/news/news';
 import NewsView from '../pages/news/newsView';
 import Students from '../pages/student/students';
 import StudentView from '../pages/student/studentView';
@@ -29,7 +31,9 @@ export function AppRoutes() {
       <Route path="/login" element={<Login />} />
 
       <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/posts" element={<PrivateRoute><PostsListing /></PrivateRoute>} />
       <Route path="/post-view/:postId" element={<PrivateRoute><PostView /></PrivateRoute>} />
+      <Route path="/news" element={<PrivateRoute><News /></PrivateRoute>} />
       <Route path="/news-view/:newsId" element={<PrivateRoute><NewsView /></PrivateRoute>} />
       <Route path="/students" element={<PrivateRoute><Students /></PrivateRoute>} />
       <Route path="/student-view/:studentId" element={<PrivateRoute><StudentView /></PrivateRoute>} />

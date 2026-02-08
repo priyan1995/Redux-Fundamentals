@@ -1,39 +1,39 @@
-import { connect, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import React, { lazy } from "react";
+import { useSelector } from "react-redux";
+import { LazyList } from "../../common/LazyList";
 
-const News = (props) => {
+const NewsItem = lazy(() => import("./NewsItem"));
 
-    const news = useSelector((state) => state.app.news)
+const newsListFallback = (
+  <div className="post-items post-items-placeholder" aria-hidden="true">
+    Loading…
+  </div>
+);
 
+const News = () => {
+  const news = useSelector((state) => state.app.news);
+
+  if (news.length === 0) {
     return (
-        <>
+      <>
+        <h2 className="main-title">News</h2>
+        <h2 className="text-center">No News Items Found...!</h2>
+      </>
+    );
+  }
 
-            <h2 className="main-title">News</h2>
-
-            {
-                news.length === 0 ?
-                    (
-                        <h2 className="text-center">No News Items Found...!</h2>
-                    )
-                    :
-                    (
-                        news.map(newsItem => {
-                            return (
-
-                                <div className="post-items" key={newsItem.id}>
-                                    <h2>{newsItem.title}</h2>
-                                    <p>{newsItem.body}</p>
-                                    <Link to={`/news-view/${newsItem.id}`}>View More</Link>
-                                </div>
-
-                            )
-                        })
-                    )
-            }
-
-        </>
-    )
-}
-
+  return (
+    <>
+      <h2 className="main-title">News</h2>
+      <LazyList
+        items={news}
+        LazyComponent={NewsItem}
+        getKey={(item) => item.id}
+        getProps={(item) => ({ newsItem: item })}
+        fallback={newsListFallback}
+      />
+    </>
+  );
+};
 
 export default News;
